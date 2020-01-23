@@ -18,17 +18,5 @@ namespace MSALSample.Pages
         {
             InitializeComponent();
         }
-
-        async void ButtonSignin_Clicked(System.Object sender, System.EventArgs e)
-        {
-            var service = new  AAuthService();
-            await service.SignInAsync();
-        }
-
-        async void ButtonSignout_Clicked(System.Object sender, System.EventArgs e)
-        {
-            var service = new  AAuthService();
-            await service.SignOutAsync();
-        }
     }
 }

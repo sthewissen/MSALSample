@@ -89,34 +89,5 @@ namespace MSALSample.Services
                 return false;
             }
         }
-
-
-        //await RefreshUserDataAsync(authResult?.AccessToken).ConfigureAwait(false);
-        //await RefreshUserDataAsync(authResult?.AccessToken).ConfigureAwait(false);
-
-        //readonly string[] Scopes = { "User.Read" };
-        //const string GraphUrl = "https://graph.microsoft.com/v1.0/me";
-
-        ///// <summary>
-        ///// Refresh user date from the Graph api.
-        ///// </summary>
-        ///// <param name="token">The user access token.</param>
-        ///// <returns>The current user with his associated informations.</returns>
-        //private async Task RefreshUserDataAsync(string token)
-        //{
-        //    HttpClient client = new HttpClient();
-        //    HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, GraphUrl);
-        //    message.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", token);
-        //    HttpResponseMessage response = await client.SendAsync(message);
-        //    //User currentUser = null;
-
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        string json = await response.Content.ReadAsStringAsync();
-        //        //currentUser = JsonConvert.DeserializeObject<User>(json);
-        //    }
-
-        //    //return currentUser;
-        //}
     }
 }
