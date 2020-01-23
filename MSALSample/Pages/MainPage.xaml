@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MSALSample.Pages.MainPage" BackgroundColor="#0178d4" ios:Page.UseSafeArea="true">
+    <Grid Padding="40,0" >
+        <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Label Text="Welcome to Xamarin.Forms!" TextColor="#ffffff" FontFamily="{StaticResource SegoeUIBold}" HorizontalTextAlignment="Center" />
+            <Label Text="To test MSAL, let's tap that sign in button below shall we? What else are you here for?" TextColor="#ffffff" FontFamily="{StaticResource SegoeUI}" HorizontalTextAlignment="Center" />
+            <Label Margin="0,20,0,0" IsVisible="{Binding IsSignedIn}" Text="{Binding Name}" TextColor="White" FontSize="28" FontFamily="{StaticResource SegoeUIBold}" HorizontalTextAlignment="Center" />
+            <ActivityIndicator IsVisible="{Binding IsSigningIn}" IsRunning="{Binding IsSigningIn}" Color="#ffffff" />
+        </StackLayout>
+        <StackLayout Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+            <Button Command="{Binding SignInCommand}" IsVisible="{Binding IsSignedIn, Converter={StaticResource InverseBooleanConverter}}" Text="Sign in" FontFamily="{StaticResource SegoeUI}" BackgroundColor="#ffffff" TextColor="#0178d4" HeightRequest="40" CornerRadius="20" HorizontalOptions="Fill" />
+            <Button Command="{Binding SignOutCommand}" IsVisible="{Binding IsSignedIn}" Text="Sign out" FontFamily="{StaticResource SegoeUI}" BackgroundColor="#ffffff" TextColor="#0178d4" HeightRequest="40" CornerRadius="20" HorizontalOptions="Fill" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
