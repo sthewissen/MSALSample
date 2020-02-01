@@ -7,7 +7,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="msauth.io.thewissen.msalsample" android:host="auth{YOUR_SIGNATURE_HASH}" />
+                <data android:scheme="msauth" android:host="io.thewissen.msalsample/{YOUR_SIGNATURE_HASH}" />
             </intent-filter>
         </activity>
     </application>

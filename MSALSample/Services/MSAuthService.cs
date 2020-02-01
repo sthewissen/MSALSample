@@ -9,8 +9,21 @@ namespace MSALSample.Services
 {
     public class AuthService
     {
-        readonly string SignatureHash = DeviceInfo.Platform == DevicePlatform.Android ? "{YOUR_SIGNATURE_HASH}" : string.Empty;
-        readonly string ClientID = "{YOUR_CLIENT_ID}";
+        string RedirectUri
+        {
+            get
+            {
+                if (DeviceInfo.Platform == DevicePlatform.Android)
+                    return $"msauth://{AppId}/{{YOUR_SIGNATURE_HASH}}";
+                else if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    return $"msauth.{AppId}://auth";
+
+                return string.Empty;
+            }
+        }
+
+        readonly string AppId = "io.thewissen.msalsample";
+        readonly string ClientID = "{YOUR_CLIENTID}";
         readonly string[] Scopes = { "User.Read" };
         readonly IPublicClientApplication _pca;
 
@@ -21,8 +34,8 @@ namespace MSALSample.Services
         public AuthService()
         {
             _pca = PublicClientApplicationBuilder.Create(ClientID)
-                .WithIosKeychainSecurityGroup("io.thewissen.msalsample")
-                .WithRedirectUri($"msauth.io.thewissen.msalsample://auth{SignatureHash}")
+                .WithIosKeychainSecurityGroup(AppId)
+                .WithRedirectUri(RedirectUri)
                 .WithAuthority("https://login.microsoftonline.com/common")
                 .Build();
         }
@@ -47,6 +60,7 @@ namespace MSALSample.Services
                     // This means we need to login again through the MSAL window.
                     var authResult = await _pca.AcquireTokenInteractive(Scopes)
                                                 .WithParentActivityOrWindow(ParentWindow)
+                                                .WithUseEmbeddedWebView(true)
                                                 .ExecuteAsync();
 
                     // Store the access token securely for later use.
