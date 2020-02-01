@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Content;
 using Microsoft.Identity.Client;
 using Plugin.CurrentActivity;
+using MSALSample.Services;
 
 namespace MSALSample.Droid
 {
@@ -28,7 +29,7 @@ namespace MSALSample.Droid
             LoadApplication(new App());
 
             // Set the current activity so the AuthService knows where to start.
-            MSAuthService.ParentWindow = CrossCurrentActivity.Current.Activity;
+            AuthService.ParentWindow = CrossCurrentActivity.Current.Activity;
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

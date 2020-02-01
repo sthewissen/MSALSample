@@ -9,7 +9,8 @@ namespace MSALSample.Services
 {
     public class AuthService
     {
-        const string ClientID = "{YOUR APPLICATION CLIENT ID HERE}";
+        readonly string SignatureHash = DeviceInfo.Platform == DevicePlatform.Android ? "{YOUR_SIGNATURE_HASH}" : string.Empty;
+        readonly string ClientID = "{YOUR_CLIENT_ID}";
         readonly string[] Scopes = { "User.Read" };
         readonly IPublicClientApplication _pca;
 
@@ -21,7 +22,8 @@ namespace MSALSample.Services
         {
             _pca = PublicClientApplicationBuilder.Create(ClientID)
                 .WithIosKeychainSecurityGroup("io.thewissen.msalsample")
-                .WithRedirectUri($"msal{ClientID}://auth")
+                .WithRedirectUri($"msauth.io.thewissen.msalsample://auth{SignatureHash}")
+                .WithAuthority("https://login.microsoftonline.com/common")
                 .Build();
         }
 

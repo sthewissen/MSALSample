@@ -43,11 +43,7 @@
 			<string>io.thewissen.msalsample</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>msal{YOUR</string>
-				<string>APPLICATION</string>
-				<string>CLIENT</string>
-				<string>ID</string>
-				<string>HERE}</string>
+				<string>msauth.io.thewissen.msalsample://auth</string>
 			</array>
 		</dict>
 	</array>
